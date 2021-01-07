@@ -35,7 +35,7 @@ class ExchangeRatesApiConverter implements ConvertCurrencyInterface
         if (!array_key_exists($currency, $rates) && $baseCurrency != $currency) {
             throw new ConverterException("Currency \"$currency\" is not supported.");
         }
-        if ($currency == "EUR") {
+        if ($baseCurrency == "EUR" && $currency == "EUR") {
             return $amount;
         }
         return $amount * $rates[$currency];
